@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Simple To-Do List</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f2f5;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .todo-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            outline: none;
+            font-size: 1rem;
+        }
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #2980b9;
+        }
+        ul {
+            list-style: none;
+        }
+        li {
+            background: #f8f9fa;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid #3498db;
+        }
+        li.completed {
+            text-decoration: line-through;
+            color: #888;
+            border-left-color: #2ecc71;
+        }
+        .delete-btn {
+            background: #e74c3c;
+            padding: 5px 10px;
+            font-size: 0.8rem;
+        }
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="todo-container">
+        <h2>📌 My To-Do List</h2>
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="လုပ်စရာရှိတာ ရိုက်ထည့်ပါ...">
+            <button onclick="addTask()">ထည့်ရန်</button>
+        </div>
+        <ul id="taskList"></ul>
+    </div>
+
+    <script>
+        function addTask() {
+            const input = document.getElementById('taskInput');
+            const taskText = input.value.trim();
+
+            if (taskText === '') {
+                alert('ကျေးဇူးပြု၍ စာသားတစ်ခုခု ရိုက်ထည့်ပါ။');
+                return;
+            }
+
+            const list = document.getElementById('taskList');
+            const li = document.createElement('li');
+
+            li.innerHTML = `
+                <span onclick="toggleComplete(this)">${taskText}</span>
+                <button class="delete-btn" onclick="removeTask(this)">ဖျက်ရန်</button>
+            `;
+
+            list.appendChild(li);
+            input.value = '';
+        }
+
+        function toggleComplete(element) {
+            element.parentElement.classList.toggle('completed');
+        }
+
+        function removeTask(button) {
+            button.parentElement.remove();
+        }
+    </script>
+
+</body>
+</html>
