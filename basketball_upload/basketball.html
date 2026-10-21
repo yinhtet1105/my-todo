@@ -1,0 +1,58 @@
+<div class="count" id="count">Uploaded 0</div>
+</header>
+
+<section class="drop-zone" id="dropZone">
+  <div class="file-card" id="fileCard">
+    <div class="file-info">
+      <span class="file-icon">DOCX</span>
+      <span class="file-name" id="fileName">
+        document.docx
+      </span>
+      <span class="status" id="status">Uploading...</span>
+    </div>
+
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <p class="success-text" id="successText">
+      Checking file...
+    </p>
+  </div>
+
+  <div class="upload-icon">⇧</div>
+  <h3>Drop files here</h3>
+  <p>or choose a DOCX file</p>
+</section>
+
+<div class="basket">
+  <div class="backboard">
+    <div class="square"></div>
+  </div>
+
+  <div class="rim"></div>
+  <div class="net"></div>
+
+  <div class="basket-ball" id="basketBall">🏀</div>
+</div>
+
+<div class="controls">
+  <button id="chooseBtn" type="button">
+    + Choose .docx file
+  </button>
+
+  <span>Only Microsoft Word (.docx)</span>
+</div>
+
+<input
+  type="file"
+  id="fileInput"
+  accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+  hidden
+>
+
+<div class="message" id="message" role="status"></div>
+
+<p class="hint" id="hint">
+  Aim your DOCX file into the basket 🏀
+</p>
